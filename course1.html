@@ -1,6 +1,8 @@
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
         <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
         <link rel="stylesheet" href="course1.css">
     </head>
@@ -240,8 +242,7 @@
                     <section data-markdown>
                         <script type="text/template">
                             This is why we overflow.
-                            ```c++
-                            // Example program
+                            ```cpp
                             #include <cstdio>
 
                             int main()
@@ -254,7 +255,20 @@
                             will output: -128.
 
                             In binary: 0111 1111 + 1 = 1000 0000
+                            Similar:
+                            ```cpp
+                            #include <cstdio>
 
+                            int main()
+                            {
+                              unsigned char will_not_overflow = 127;
+                              unsigned char will_overflow = 255;
+                              will_not_overflow++;
+                              will_overflow++;
+                              printf("127 became %i, while 255 became %i", will_not_overflow, will_overflow);
+                            }
+                            ```
+                            will output: 127 became 128, while 255 became 0
                         </script>
                     </section>
                 </section>
@@ -267,10 +281,26 @@
             </div>
         </div>
         <script src="reveal.js/js/reveal.js"></script>
-		<script src="reveal.js/plugin/markdown/marked.js"></script>
-		<script src="reveal.js/plugin/markdown/markdown.js"></script>
-        <script>
-            Reveal.initialize();
+		<script>
+            Reveal.initialize({
+                dependencies: [
+                    // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+                    // Interpret Markdown in <section> elements
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+                    // Syntax highlight for <code> elements
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+                    // Zoom in and out with Alt+click
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+                    // Speaker notes
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                ]
+            });
         </script>
     </body>
 </html>
