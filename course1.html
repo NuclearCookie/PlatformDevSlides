@@ -46,6 +46,10 @@
                 <section data-markdown>
                     <script type="text/template">
                         ## What will be covered in this course?
+                    </section>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
                         ### Theory goals:
                         * Computer Architecture
                         * Binary representations
@@ -156,9 +160,7 @@
 
                         Check every smaller multiple and write down 0 ( 8, 4 )
 
-                        `2 / 2 = 1 | 0`
-
-                        keep going until you reached 2<sup>0</sup>
+                        `2 / 2 = 1 | 0`  Keep going until you reached 2<sup>0</sup>
 
                         | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
                         | --- | --- | --- | --- | --- |
@@ -204,11 +206,13 @@
                     <script type="text/template">
                         # Signed vs Unsigned
 
-                        _using 8bit integers to simplify_
+                        _using 8bit integers (chars) to simplify_
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
+                        ### signed char:
+
                         | decimal | binary |
                         | --- | --- |
                         | 0 | 0 |
@@ -221,56 +225,211 @@
                         What about negative values?
                     </script>
                 </section>
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            We are already using all possible values in the 8 bit range..
-                            Solution:
-                            change range from [0;255] to [-128;127]
+                <section data-markdown>
+                    <script type="text/template">
+                        We are already using all possible values in the 8 bit range..
 
-                            | decimal | binary |
-                            | --- | --- |
-                            | 0 | 0 |
-                            | 1 | 1 |
-                            | 2 | 10 |
-                            | ... | ... |
-                            | 127 | 0111 1111 |
-                            | -128 | 1000 0000 |
-                            | -1 | 1111 1111 |
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            This is why we overflow.
-                            ```cpp
-                            #include <cstdio>
+                        Solution:
 
-                            int main()
-                            {
-                              char will_overflow = 127;
-                              will_overflow++;
-                              printf("%i", will_overflow);
-                            }
-                            ```
-                            will output: -128.
+                        change range from [0;255] to [-128;127]
 
-                            In binary: 0111 1111 + 1 = 1000 0000
-                            Similar:
-                            ```cpp
-                            #include <cstdio>
+                        How do we represent this?
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        We could go for adding a sign bit:
 
-                            int main()
-                            {
-                              unsigned char will_not_overflow = 127;
-                              unsigned char will_overflow = 255;
-                              will_not_overflow++;
-                              will_overflow++;
-                              printf("127 became %i, while 255 became %i", will_not_overflow, will_overflow);
-                            }
-                            ```
-                            will output: 127 became 128, while 255 became 0
-                        </script>
-                    </section>
+                        | decimal | binary |
+                        | --- | --- |
+                        | 0 | 0 |
+                        | 1 | <span style='color:red'>0</span>000 0001 |
+                        | -1 | <span style='color:red'>1</span>000 0001 |
+                        | 2 | <span style='color:red'>0</span>000 0010 |
+                        | -2 | <span style='color:red'>1</span>000 0010 |
+                        | ... | ... |
+                        | 127 | <span style='color:red'>0</span>111 1111 |
+                        | -127 | <span style='color:red'>1</span>111 1111 |
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### Let's see if this is ok...
+
+                        * Problem 1: we have 1 value that is not used: 1000 0000
+                        ( negative 0 ??)
+                        * Problem 2: Let's look at operations.
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        105 + 77 = 182
+
+                        | | 0110 1001 |
+                        | --- | ---: |
+                        |+| 0100 1101 |
+                        | | 1011 0110 |
+
+                        105 - 77 = 28
+
+                        | | 0110 1001 |
+                        | --- | ---: |
+                        |-| 0100 1101 |
+                        | | 0001 1100 |
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        A computer needs to implement the hardware for math operations.
+                        How can we rewrite a subtraction so that it uses the same system as addition?
+
+                        a - b == a + ( -b )
+                        <!-- .element: class="fragment" -->
+
+                        **right?**
+                        <!-- .element: class="fragment" -->
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        105 - 77 = 28
+
+                        | | 0110 1001 |
+                        | --- | ---: |
+                        |-| 0100 1101 |
+                        | | 0001 1100 |
+
+                        105 + -77 = 28
+
+                        | |  0110 1001 |
+                        | --- | ---: |
+                        |+|  1100 1101 |
+                        | | 10011 0110 |
+
+                        wait, 105 + -77 = 310 !?
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Complementary numbers.
+                        What is a complementary number?
+
+                        A complementary number is the number obtained by subtracting a number from its base.
+
+                        For example:
+
+                        The nine's complement of 23 is 76 because 23 + 76 = 99, which is the nine's base of 23.
+
+                        Knowing this, we can rewrite our subtraction:
+                        ```
+                        105 -77
+                        105 -77 + 100 - 100
+                        105 -77 + 99 + 1 - 100
+                        105 + (99 - 77) + 1 - 100
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        105 + (99 - 77) + 1 - 100
+
+                        | | 105 |
+                        | --- | ---: |
+                        |-| 77 |
+                        | | 28 |
+
+                        ==
+
+                        | | 105 |
+                        | --- | ---: |
+                        |+| 22 |
+                        |+| 1 |
+                        |-| 100 |
+                        | | 28 |
+                    </script>
+                </section>
+                <section data-markdown class="smaller_text">
+                    <script type="text/template">
+                        What is the one's complement of a binary number?
+
+
+                        | | 0110 1001 |
+                        | --- | ---: |
+                        |-| 0100 1101 |
+                        | | 0001 1100 |
+
+                        The inverse! `0000 0001 + 1111 1110 = 1111 1111`
+
+                        | |   0110 1001 |
+                        | --- | ---: |
+                        |+|   1011 0010 |
+                        |+|   0000 0001 |
+                        |-| 1 0000 0000 |
+                        | | 0 0001 1100 |
+
+                        Now also note that the - 1 0000 0000 is not really necessary because we only have 8 bits memory available.
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        We have just rewritten a negative value as its one's complement + 1.
+
+                        **This is called the two's complement.**
+
+                        0000 0001 + 1111 1111 = 1 0000 0000
+                    </script>
+                </section>
+                <section data-markdown class="smaller_text">
+                    <script type="text/template">
+                        ### Unsigned char
+
+                        We have now a very good binary representation of negative and positive whole numbers.
+
+                        | decimal | binary |
+                        | --- | --- |
+                        | 0 | 0 |
+                        | 1 | 0000 0001 |
+                        | 2 | 0000 0010 |
+                        | 127 | 0111 1111 |
+                        | -128 | 1000 0000 |
+                        | -2 | 1111 1110 |
+                        | -1 | 1111 1111 |
+
+                        As you can see:
+                        * We still have the signing bit
+                        * We use all binary combinations [-128;127]
+                        * We can easily perform arithmatic operations on positive and negative values
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        We can verify this implementation when we overflow.
+                        ```cpp
+                        #include <cstdio>
+
+                        int main()
+                        {
+                          char will_overflow = 127;
+                          will_overflow++;
+                          printf("%i", will_overflow);
+                        }
+                        ```
+                        will output: -128.
+
+                        ```cpp
+                        #include <cstdio>
+
+                        int main()
+                        {
+                          unsigned char will_not_overflow = 127;
+                          unsigned char will_overflow = 255;
+                          will_not_overflow++;
+                          will_overflow++;
+                          printf("127 became %i, while 255 became %i", will_not_overflow, will_overflow);
+                        }
+                        ```
+                        will output: 127 became 128, while 255 became 0
+                    </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">

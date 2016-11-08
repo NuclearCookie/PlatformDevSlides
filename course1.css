@@ -3,3 +3,7 @@
     overflow-y: auto  !important;
     overflow-x: hidden !important;
 }
+
+.smaller_text {
+    font-size:75% !important;
+}
