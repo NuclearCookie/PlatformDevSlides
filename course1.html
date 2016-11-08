@@ -197,6 +197,67 @@
                         </script>
                     </section>
                 </section>
+                <!-- memory representation -->
+                <section data-markdown>
+                    <script type="text/template">
+                        # Signed vs Unsigned
+
+                        _using 8bit integers to simplify_
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        | decimal | binary |
+                        | --- | --- |
+                        | 0 | 0 |
+                        | 1 | 1 |
+                        | 2 | 10 |
+                        | ... | ... |
+                        | 127 | 0111 1111 |
+                        | 255 | 1111 1111 |
+
+                        What about negative values?
+                    </script>
+                </section>
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            We are already using all possible values in the 8 bit range..
+                            Solution:
+                            change range from [0;255] to [-128;127]
+
+                            | decimal | binary |
+                            | --- | --- |
+                            | 0 | 0 |
+                            | 1 | 1 |
+                            | 2 | 10 |
+                            | ... | ... |
+                            | 127 | 0111 1111 |
+                            | -1 | 1111 1111 |
+                            | -128 | 1000 0000 |
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            This is why we overflow.
+                            ```c++
+                            // Example program
+                            #include <cstdio>
+
+                            int main()
+                            {
+                              char will_overflow = 127;
+                              will_overflow++;
+                              printf("%i", will_overflow);
+                            }
+                            ```
+                            will output: -128.
+
+                            In binary: 0111 1111 + 1 = 1000 0000
+
+                        </script>
+                    </section>
+                </section>
                 <!-- empty Slide
                 <section data-markdown>
                     <script type="text/template">
