@@ -139,6 +139,30 @@
                         <!-- .element: class="fragment" -->
                     </script>
                 </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### From base <sub>10</sub> to base <sub>x</sub>
+
+                        18 in binary ( where 18 = y )?
+
+                        * Find closest multiple of x <= y.
+                        * perform tail division.
+
+                        `18 / 16 = 1 | 2`
+
+                        Write down the 1.
+
+                        Check every smaller multiple and write down 0 ( 8, 4 )
+
+                        `2 / 2 = 1 | 0`
+
+                        keep going until you reached 2<sup>0</sup>
+
+                        | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
+                        | --- | --- | --- | --- | --- |
+                        | 1 | 0 | 0 | 1 | 0 |
+                    </script>
+                </section>
                 <!-- empty Slide
                 <section data-markdown>
                     <script type="text/template">
