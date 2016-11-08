@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
         <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+        <link rel="stylesheet" href="course1.css">
     </head>
     <body>
         <div class="reveal">
@@ -55,6 +56,95 @@
                         Convert the overlord engine to be cross platform with Linux
                     </script>
                 </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## How will each lesson be divided?
+
+                        A few hours of theory <-> A few hours of exercises
+
+                        _If you have questions, **Interrupt us!** Don't wait until the end_
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        # Computer architecture
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        # Binary representation
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Base <sub>x</sub>
+
+                        * Decimal numbers
+                        * Octal numbers
+                        * Hexadecimal numbers
+                        * Binary numbers
+                    </script>
+                </section>
+                <section data-markdown class="scrollable">
+                    <script type="text/template">
+                        | Decimal | Hex | Octal | Binary |
+                        | ------: |----:|------:|-------:|
+                        | 0       | 0x0   | 0     | 0      |
+                        | 1       | 0x1   | 1     | 1      |
+                        | 2       | 0x2   | 2     | 10     |
+                        | 3       | 0x3   | 3     | 11     |
+                        | 4       | 0x4   | 4     | 100    |
+                        | 5       | 0x5   | 5     | 101    |
+                        | 6       | 0x6   | 6     | 110    |
+                        | 7       | 0x7   | 7     | 111    |
+                        | 8       | 0x8   | 10    | 1000   |
+                        | 9       | 0x9   | 11    | 1001   |
+                        | 10      | 0xA   | 12    | 1010   |
+                        | 11      | 0xB   | 13    | 1011   |
+                        | 12      | 0xC   | 14    | 1100   |
+                        | 13      | 0xD   | 15    | 1101   |
+                        | 14      | 0xE   | 16    | 1110   |
+                        | 15      | 0xF   | 17    | 1111   |
+                        | 16      | 0x10  | 20    | 10000  |
+                        | 17      | 0x11  | 21    | 10001  |
+                        | 18      | 0x12  | 22    | 10010  |
+                        | 19      | 0x13  | 23    | 10011  |
+                        | 20      | 0x14  | 24    | 10100  |
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## How do you convert between numbers of different base?
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### From base <sub>x</sub> to base <sub>10</sub>
+
+                        0b1001 in decimal? <!-- .element: class="fragment" -->
+
+                        | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
+                        | ------------- | ------------- | ------------- | ------------- |
+                        | 1             | 0             | 0             | 1             |
+                        <!-- .element: class="fragment" -->
+
+                        ->
+
+                        <!-- .element: class="fragment" -->
+                        | 1 * 8 | 0 * 4 | 0 * 2 | 1 * 1 |
+                        | ---   | ---   | ---   | ---   |
+                        | 8     | 0     | 0     | 1     |
+                        <!-- .element: class="fragment" -->
+                        8 + 0 + 0 + 1 =  9
+                        <!-- .element: class="fragment" -->
+                    </script>
+                </section>
+                <!-- empty Slide
+                <section data-markdown>
+                    <script type="text/template">
+                    </script>
+                </section>
+                -->
             </div>
         </div>
         <script src="reveal.js/js/reveal.js"></script>
