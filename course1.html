@@ -272,6 +272,40 @@
                         </script>
                     </section>
                 </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## How can we easily change the sign of a number through bit manipulation?
+
+                        | decimal | binary |
+                        | --- | --- |
+                        | 1 | 0000 0001 |
+                        | -1 | 1111 1111 |
+                        | 2 | 0000 0010 |
+                        | -2 | 1111 1110 |
+                        | 127 | 0111 1111 |
+                        | -127 | 1000 0001 |
+
+                        Do you see a correlation?
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### To change the sign of a signed integer we invert the values and add 1.
+
+                        !0000 0001 = 1111 1110<br/>
+                        1111 1110 + 1 = 1111 1111
+
+                        and back:
+
+                        !1111 1111 = 0000 0000<br/>
+                        0000 0000 + 1 = 0000 0001
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### This is called the Two's complement
+                    </script>
+                </section>
                 <!-- empty Slide
                 <section data-markdown>
                     <script type="text/template">
