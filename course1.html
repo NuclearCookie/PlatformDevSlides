@@ -465,6 +465,74 @@
                         ### This is called the Two's complement
                     </script>
                 </section>
+                <section data-markdown class="smaller_text">
+                    <script type="text/template">
+                        ## Bitwise operators
+
+                        | Operator | Symbol | Form | Operation |
+                        | -------- | :------: | ----: | --------- |
+                        | left shift | << | x << y | all bits in x shifted left y bits |
+                        | right shift | >> | x >> y | all bits in x shifted right y bits |
+                        | bitwise NOT | ~ | ~x | all bits in x flipped |
+                        | bitwise AND | & | x & y | each bit in x AND each bit in y |
+                        | bitwise OR | &#124; | x &#124; y | each bit in x OR each bit in y |
+                        | bitwise XOR | ^ | x ^ y | each bit in x XOR each bit in y |
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Left Shift
+
+                        0010 1111 << 1 == 0101 1110
+                        0010 1111 << 4 == 1111 0000
+                        0010 1111 << 8 == 0000 0000
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Right Shift
+
+                        0010 1111 >> 1 == 0001 0111
+                        0010 1111 >> 4 == 0000 0010
+                        0010 1111 >> 8 == 0000 0000
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Bitwise NOT
+
+                        ~0010 1111 == 1101 0000
+                        ~1111 1111 == 0000 0000
+                        ~0000 0000 == 1111 1111
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Bitwise AND
+
+                        0010 1111 & 1111 1111 == 0010 1111
+                        0010 1111 & 0000 0000 == 0000 0000
+                        0010 1111 & 1001 0110 == 0000 0110
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Bitwise OR
+
+                        0010 1111 &#124; 1111 1111 == 1111 1111
+                        0010 1111 &#124; 0000 0000 == 0010 1111
+                        0010 1111 &#124; 1001 0110 == 1011 1111
+                    </script>
+                </section>
+                section data-markdown>
+                    <script type="text/template">
+                        ## Bitwise XOR
+
+                        0010 1111 ^ 1111 1111 == 1101 0000
+                        0010 1111 ^ 0000 0000 == 0010 1111
+                        0010 1111 ^ 1001 0110 == 1011 1001
+                    </script>
+                </section>
                 <!-- empty Slide
                 <section data-markdown>
                     <script type="text/template">
