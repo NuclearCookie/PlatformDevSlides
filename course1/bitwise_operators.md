@@ -79,6 +79,25 @@ Note that the standard does not specify this behavior.
 0010 1111 ^ 1001 0110 == 1011 1001
 ```
 
+
+
 ## What can we do with this?
 
-Commonly used in games: bit flags.
+* Commonly used in games: bit flags.
+* Very easy to implement simple math operations
+
+
+##Lets try some math operations
+
+* Write your own math.abs() function using bitwise operators.<!-- .element: class="fragment" -->
+* Write a simple adding machine<!-- .element: class="fragment" -->
+
+| + sum | 0    | 1    |  |  | + carry | 0    | 1    |
+| ---:  | ---: | ---: | --- | ---:    | ---: | ---: |
+| 0     | 0    | 1    |  |  | 0       | 0    | 0    |
+| 1     | 1    | 0    |  |  | 1       | 0    | 1    |
+<!-- .element: class="fragment" -->
+
+
+Here's a list of bithacks:
+http://graphics.stanford.edu/~seander/bithacks.html
