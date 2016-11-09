@@ -1,3 +1,6 @@
+<!-- .slide: class="smaller_text" -->
+## Bitwise operators
+
 | Operator | Symbol | Form | Operation |
 | -------- | :------: | ----: | --------- |
 | left shift | << | x << y | all bits in x shifted left y bits |
@@ -16,6 +19,7 @@
 0010 1111 << 4 == 1111 0000
 0010 1111 << 8 == 0000 0000
 ```
+
 
 
 ## Right Shift

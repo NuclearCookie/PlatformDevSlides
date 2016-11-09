@@ -1,4 +1,4 @@
-### signed char:
+### Unsigned char:
 
 | decimal | binary |
 | --- | --- |
@@ -159,7 +159,7 @@ We have just rewritten a negative value as its one's complement + 1.
 
 
 
-### Unsigned char
+### Signed char
 
 We have now a very good binary representation of negative and positive whole numbers.
 
