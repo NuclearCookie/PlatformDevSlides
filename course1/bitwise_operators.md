@@ -78,3 +78,7 @@ Note that the standard does not specify this behavior.
 0010 1111 ^ 0000 0000 == 0010 1111
 0010 1111 ^ 1001 0110 == 1011 1001
 ```
+
+## What can we do with this?
+
+Commonly used in games: bit flags.
