@@ -1,10 +1,9 @@
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
-        <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-        <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
-        <link rel="stylesheet" href="course1.css">
+        <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/solarized.css">
+        <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="reveal">
@@ -16,61 +15,13 @@
                         A course about low level programming and targetting different architectures.
                     </script>
                 </section>
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Who are we?
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Julien Hamaide
+                <section data-markdown="intro.md"
+                         data-separator="^\n\n\n"
+                         data-separator-vertical="^\n\n"
+                         data-separator-notes="^Note:">
 
-                            * +15 years industry experience
-                            * Technical Director @ Fishing Cactus
-                            * Experience with XBox360, PS3, Wii, 3DS, Mobile, PC/Linux/macOS, Web
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Pieter Vantorre
-
-                            * 2 years industry experience
-                            * Senior Programmer @ Fishing Cactus
-                            * Experience with Mobile, PC/Linux/macOS, Web
-                            * DAE Alumnus
-
-                        </script>
-                    </section>
                 </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## What will be covered in this course?
-                    </section>
-                </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ### Theory goals:
-                        * Computer Architecture
-                        * Binary representations
-                        * Cross platform programming
-                        * Certification
-                        * Tips and tricks
- <p></p>
 
-                        ### Project goals:
-                        Convert the overlord engine to be cross platform with Linux
-                    </script>
-                </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## How will each lesson be divided?
-
-                        A few hours of theory <-> A few hours of exercises
-
-                        _If you have questions, **Interrupt us!** Don't wait until the end_
-                    </script>
-                </section>
                 <section data-markdown>
                     <script type="text/template">
                         # Computer architecture
@@ -387,13 +338,13 @@
 
                         | decimal | binary |
                         | --- | --- |
-                        | 0 | 0 |
-                        | 1 | 0000 0001 |
-                        | 2 | 0000 0010 |
                         | 127 | 0111 1111 |
-                        | -128 | 1000 0000 |
-                        | -2 | 1111 1110 |
+                        | 2 | 0000 0010 |
+                        | 1 | 0000 0001 |
+                        | 0 | 0 |
                         | -1 | 1111 1111 |
+                        | -2 | 1111 1110 |
+                        | -128 | 1000 0000 |
 
                         As you can see:
                         * We still have the signing bit
@@ -501,12 +452,15 @@
                         ```
 
                         **Careful:**
-                        ```
+                        ```cpp
+                        //signed right shift:
                         1000 0010 >> 1 == 1100 0001
-                        or
+                        0100 0010 >> 1 == 0010 0001
+                        //or unsigned right shift:
                         1000 0010 >> 1 == 0100 0001
+                        0100 0010 >> 1 == 0010 0001
                         ```
-                        The value of the new most significant bit is implementation specific.
+                        Note that the standard does not specify this behavior.
                     </script>
                 </section>
                 <section data-markdown>
@@ -553,6 +507,11 @@
                         ```
                     </script>
                 </section>
+                <section data-markdown>
+                    <script type="text/template">
+
+                    </script>
+                </section>
                 <!-- empty Slide
                 <section data-markdown>
                     <script type="text/template">
@@ -561,25 +520,26 @@
                 -->
             </div>
         </div>
-        <script src="reveal.js/js/reveal.js"></script>
+        <script src="../reveal.js/lib/js/head.min.js"></script>
+        <script src="../reveal.js/js/reveal.js"></script>
 		<script>
             Reveal.initialize({
                 dependencies: [
                     // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 
                     // Interpret Markdown in <section> elements
-                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 
                     // Syntax highlight for <code> elements
-                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 
                     // Zoom in and out with Alt+click
-                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
 
                     // Speaker notes
-                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                    { src: '../reveal.js/plugin/notes/notes.js', async: true },
                 ]
             });
         </script>
