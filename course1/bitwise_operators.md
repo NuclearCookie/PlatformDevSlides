@@ -87,7 +87,7 @@ Note that the standard does not specify this behavior.
 * Very easy to implement simple math operations
 
 
-##Lets try some math operations
+##Let's try some math operations
 
 * Write your own math.abs() function using bitwise operators.<!-- .element: class="fragment" -->
 * Write a simple adding machine<!-- .element: class="fragment" -->

@@ -57,6 +57,7 @@ A computer is a data processor
 
 ![ALU](images/ALU_block.gif)
 
+
 ##Floating Point Unit
 
 * Similar to ALU, but with floating points
@@ -70,7 +71,7 @@ A computer is a data processor
 * Has a specific set of Registers
 
 
-##Memory Management Unit
+##Memory Management Unit (MMU)
 
 * Convert logical address to physical address
 * Allow for more memory than pointer size ( 32bit = 4GB Max)
@@ -81,7 +82,7 @@ A computer is a data processor
 
 ##MMU
 
-* Translation lookaside buffer
+* Translation Lookaside Buffer (TLB)
 * Manage by the OS
 * One per process
 * Lookup is made by the hardware
@@ -128,11 +129,13 @@ A computer is a data processor
 * Shared amongst core
   * L3 cache ( 8MB )
 
+
 ###Behavior
 
 * CPU read L1 caches
 * If miss, read L2
 * If miss, read Main memory
+
 
 ###Behavior
 
@@ -140,12 +143,15 @@ A computer is a data processor
 * L1 line is written back to L2
 * L2 line is written back to main memory
 
+
 ###Behavior
 
 * What happens if another core has written the line?
 * What happens if only one byte is needed?
 * What happens if 2 core uses 2 bytes on the same line at the same time?
 
+
+<!-- .slide: class="smaller_text" -->
 ### Xbox one timing
 
 | Memory access result | Cycles | Notes
@@ -181,6 +187,7 @@ A computer is a data processor
     * Memory lines fight for cache space
 
 
+<!-- .slide: class="smaller_text" -->
 ### Timings
 | | Duration |  |
 |---|---|---|
@@ -258,6 +265,7 @@ A computer is a data processor
 * Opcode (operation code)
 * Binary string, encoding operation
 * Built to allow fast decoding
+
 
 ##RISC instruction
 
