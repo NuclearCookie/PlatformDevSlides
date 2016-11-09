@@ -499,6 +499,14 @@
                         0010 1111 >> 4 == 0000 0010
                         0010 1111 >> 8 == 0000 0000
                         ```
+
+                        **Careful:**
+                        ```
+                        1000 0010 >> 1 == 1100 0001
+                        or
+                        1000 0010 >> 1 == 0100 0001
+                        ```
+                        The value of the new most significant bit is implementation specific.
                     </script>
                 </section>
                 <section data-markdown>
