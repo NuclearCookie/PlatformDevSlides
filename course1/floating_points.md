@@ -48,3 +48,39 @@ _IEEE Standard for Binary Floating-Point Arithmetic_
 
 * Defines single precision ( 4 bytes ) format
 * Defines double precision ( 8 bytes ) format
+
+
+### Single precision
+
+| Sign | Exponent | Significand |
+| --- | --- | --- |
+| 1 bit | 8 bit | 23 bit |
+
+because there is always a 1 left of the binary point, we don't include it.
+
+Only 23 bits are used to store the significand, but the precision is **24 bits**
+
+The 8-bit exponent has range [0;255]. This is a _biased_ exponent. We need to subtract a number to get the _unbiased_ exponent.
+
+**For single precision floating-point numbers, the bias is 127**
+
+
+### Single precision
+
+(-1)<sup>_s_</sup> * 1._f_ * 2<sup>_e_-127</sup>
+
+where
+* _s_ = sign bit
+* _f_ = significand
+* _e_ = exponent
+
+
+####Special cases
+| Sign | Exponent | Significand | Result                            |
+| :--- | :------- | :---------- | --------------------------------: |
+| 0    | 0        | 0           | 0                                 |
+| 1    | 0        | 0           | -0 ( very small negative number ) |
+| ?    | 0        | != 0        | unnormalized number               |
+| 0    | 255      | 0           | Positive Infinity                 |
+| 1    | 255      | 0           | Negative Infinity                 |
+| ?    | 255      | != 0        | NaN                               |
