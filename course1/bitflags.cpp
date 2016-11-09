@@ -17,7 +17,7 @@ class Monster
 {
 private:
     uint8_t m_Resistance;
-    int life = 100;
+    int m_Life;
 
 public:
 
@@ -25,14 +25,15 @@ public:
     {
         if(m_Resistance & type)
         {
-            life -= 10;
+            m_Life -= 10;
             return true;
         }
         return false;
     }
 
     Monster( int resistanceMask )
-        : m_Resistance(resistanceMask)
+        : m_Resistance(resistanceMask),
+        m_Life(100)
     {
 
     }
