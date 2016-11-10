@@ -248,16 +248,18 @@ A computer is a data processor
 
 ##RISC CPU
 * simpler
-* consume less energy (ARM on phones)
+* consume less energy
 * fixed size instruction set
 * instruction execution is faster but does less
+* ARM ( used on phones ), PowerPc ( Xbox 360, PS3 )
 
 
 ##CISC CPU
-* more complex, more transistor, more expansive
+* more complex, more transistor, more expensive
 * more versatile
 * variable size instruction set
 * instruction execution is slower, but does a lot more
+* X86(_64)
 
 
 ##What is an instruction
