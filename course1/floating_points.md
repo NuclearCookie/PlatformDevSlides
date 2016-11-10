@@ -84,3 +84,27 @@ where
 | 0    | 255      | 0           | Positive Infinity                 |
 | 1    | 255      | 0           | Negative Infinity                 |
 | ?    | 255      | != 0        | NaN                               |
+
+
+### Single precision
+
+24 bit signifcant is roughly equal to 7 decimal digits.
+
+11111111 11111111 1111111 == 16777215
+
+we say that single-precision floating-points offer a _precision_ of 24 bits, or 7 decimal digits.
+
+
+### Double precision
+
+| Sign | Exponent | Significand |
+| --- | --- | --- |
+| 1 bit | 11 bit | 52 bit |
+
+because there is always a 1 left of the binary point, we don't include it.
+
+Only 23 bits are used to store the significand, but the precision is **24 bits**
+
+The 8-bit exponent has range [0;255]. This is a _biased_ exponent. We need to subtract a number to get the _unbiased_ exponent.
+
+**For single precision floating-point numbers, the bias is 127**
