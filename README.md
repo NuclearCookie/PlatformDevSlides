@@ -3,7 +3,7 @@ Slides to the platform dev course
 
 ## View the courses online
 ### Course 1
-* [Intro](course1/Intro.md)
+* [Intro](course1/intro.md)
 * [Computer Architecture](course1/computer_architecture.md)
 * [Converting Base](course1/converting_base.md)
 * [Signed vs Unsigned](course1/signed_unsigned.md)
