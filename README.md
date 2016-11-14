@@ -3,13 +3,13 @@ Slides to the platform dev course
 
 ## View the courses online
 ### Course 1
-[Intro](course1/Intro.md)
-[Computer Architecture](course1/computer_architecture.md)
-[Converting Base](course1/converting_base.md)
-[Signed vs Unsigned](course1/signed_unsigned.md)
-[Bitwise Operators](course1/bitwise_operators.md)
-[Floating Points](course1/floating_points.md)
-[Homework](course1/homework.md)
+* [Intro](course1/Intro.md)
+* [Computer Architecture](course1/computer_architecture.md)
+* [Converting Base](course1/converting_base.md)
+* [Signed vs Unsigned](course1/signed_unsigned.md)
+* [Bitwise Operators](course1/bitwise_operators.md)
+* [Floating Points](course1/floating_points.md)
+* [Homework](course1/homework.md)
 
 
 ## Run the slides locally
