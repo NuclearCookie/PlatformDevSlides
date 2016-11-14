@@ -6,7 +6,7 @@ we want to represent numbers ranging from
 * 0.000000000037 ( size in meter of a hydrogen atom ),
 * all the way up to 149600000000 ( distance from earth to the sun in meters )
 
-There is an infinite number of real numbers to be represented by only 32 bytes.
+There is an infinite number of real numbers to be represented by only 32 bit.
 
 
 
@@ -100,11 +100,3 @@ we say that single-precision floating-points offer a _precision_ of 24 bits, or 
 | Sign | Exponent | Significand |
 | --- | --- | --- |
 | 1 bit | 11 bit | 52 bit |
-
-because there is always a 1 left of the binary point, we don't include it.
-
-Only 23 bits are used to store the significand, but the precision is **24 bits**
-
-The 8-bit exponent has range [0;255]. This is a _biased_ exponent. We need to subtract a number to get the _unbiased_ exponent.
-
-**For single precision floating-point numbers, the bias is 127**
