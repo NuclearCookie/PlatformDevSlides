@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 
     /* Copy process */
     while((ret_in = read (input_fd, &buffer, BUF_SIZE)) > 0){
-            ret_out = write (output_fd, &buffer, (ssize_t) ret_in);
+            ret_out = write (output_fd, &buffer, (size_t) ret_in);
             if(ret_out != ret_in){
                 /* Write error */
                 perror("write");
