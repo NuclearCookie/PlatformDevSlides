@@ -180,3 +180,48 @@ private:
 private:
     HANDLE m_Handle;
 ```
+
+
+
+## Other platform tricks
+
+
+
+### Re-defining types
+Before c++11:
+
+example: `sizeof(int) == 4`. This would not be true on all platforms!
+
+*Solution:* `typedef int int32`
+
+It makes sense to have a file full of defines like this.
+
+
+### Supporting new features on old platforms
+
+```cpp
+class TestClass {
+public:
+    TestClass() = default;
+};
+```
+
+becomes
+
+```cpp
+// compiled.h
+#if Supports_Cpp11
+    #define DEFAULT_CONSTRUCTOR( _CLASS_ ) _CLASS_() = default;
+#else
+    #define DEFAULT_CONSTRUCTOR( _CLASS_ ) _CLASS_() {}
+#endif
+```
+
+```cpp
+#include "compiled.h"
+
+class TestClass {
+public:
+    DEFAULT_CONSTRUCTOR( TestClass )
+};
+```
