@@ -194,7 +194,9 @@ example: `sizeof(int) == 4`. This would not be true on all platforms!
 
 *Solution:* `typedef int int32`
 
-It makes sense to have a file full of defines like this.
+It makes sense to have a file full of defines like this _and include it everywhere_.
+
+**MAKE SURE TO GUARD THAT FILE!!**
 
 
 ### Supporting new features on old platforms
