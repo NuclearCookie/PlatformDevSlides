@@ -42,3 +42,33 @@ Make the test succeed.
 Like TDD but focusses on tests that describe _behavior_ over a test of implementation.
 
 Non-programmers can design BDD teests for a design.
+
+
+## Unit testing frameworks
+
+A lot of choice per language.
+
+We will use Catch for c++ unit testing.
+
+* Easy to learn
+* 1 file
+* each test ran independently ( continue after fail )
+
+Download [Catch.hpp](https://github.com/philsquared/Catch/blob/master/include/catch.hpp)
+
+
+## Exercise
+
+Create a project, add catch.hpp and write a Vector3 class.
+
+Write following methods:
+* Component wise addition
+* Component wise multiplication
+* Debug print
+
+Write tests for these methods.
+
+now use TDD and implement:
+* Dot product
+* Set(x,y,z)
+* operator ==
