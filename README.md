@@ -11,6 +11,13 @@ Slides to the platform dev course
 * [Floating Points](course1/floating_points.md)
 * [Homework](course1/homework.md)
 
+### Course 2
+* [Intro](course2/intro.md)
+* [Cross Platform Programming](course2/cross_platform_programming.md)
+* [Project Generation](course2/project_generation.md)
+* [Unit Testing](course2/unit_testing.md)
+* [Continuous Integration](course2/continuous_integration.md)
+* [Homework](course2/homework.md)
 
 ## Run the slides locally
 
