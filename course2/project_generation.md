@@ -1,3 +1,7 @@
+# Project generation
+
+
+
 ## Project generation
 
 Problem: How to convert a .sln file to a makefile or xcodeproj ?
@@ -10,6 +14,7 @@ Manually.
 Problems:
 * Not easily extendable to another platform
 * Changing the project requires you to change all platforms
+
 
 ## Solution 2:
 

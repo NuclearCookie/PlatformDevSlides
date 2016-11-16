@@ -1,3 +1,7 @@
+# Cross platform programming
+
+
+
 ## Cross platform programming
 
 **1 frontend, multiple backends**
@@ -14,16 +18,19 @@ _The user should not write platform specific code_
 **Exercise:**
 Write a simple program that accepts the following syntax:
 `myprogram --backend="xx_renderer"`
+
 You support a green console renderer and a red console renderer.
 The program's output should be:
+
 `Look mom! I'm colored text!`
 
 Implement those backends using virtuality.
 
+
 ### Advantages of using virtuality
 
 * Switch backends from command line ( or launcher )
-* Clear code structure Base > Backend 1 or Base > Backend 2
+* Clear code structure Base > Backend1 or Base > Backend2
 
 
 ## Drawbacks of using virtuality
@@ -43,13 +50,9 @@ It would be nice if we could have code that only compiles on a given platform.
 
 The 4 stages of compiling:
 
-* Preprocessing
-* Compiling
-* Assembling
-* Linking
-
-| Preprocessing | Interpreting preprocessor commands ( # ), stripping comments, ..     |
+| Compiler stage | short description |
 | :------------ | :------------- |
+| Preprocessing | Interpreting preprocessor commands ( # ), stripping comments, ..     |
 | Compiling     | Translation C/C++ to assembly       |
 | Assembling    | Assembling the assembly to _object code_ ( obj ) |
 | Linking       | Adds missing code ( system functions ) and combines the obj files.|
@@ -149,9 +152,12 @@ public:
 #endif
 ```
 
+
 ## Need platform specific includes or member variables?
 
 No problem!
+
+
 ```cpp
 // file_system.h
 #pragma once
@@ -184,7 +190,6 @@ private:
 
 
 ## Other platform tricks
-
 
 
 ### Re-defining types
