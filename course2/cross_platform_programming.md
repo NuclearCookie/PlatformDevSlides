@@ -103,7 +103,7 @@ or
 ## Exercise
 
 Convert the linux file sample so that it works on windows too.
-* Don't keep everything in 1 file. Make a class tor actions on the filesystem
+* Don't keep everything in 1 file. Make a class for actions on the filesystem
 * Use preprocessor defines to have platform specific code
 * Test the solution on windows for now.
 

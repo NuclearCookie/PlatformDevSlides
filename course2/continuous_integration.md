@@ -9,7 +9,12 @@ My definition:
 
 ### How is it used
 
-Each time you push to master, or create a PR to master, a series of tests are run on servers ( multiple plaforms )
+minimal usage:
+Each time you push to master, a series of tests are run on servers ( multiple platforms )
+
+extend to:
+* when creating a PR
+* each commit on each branch
 
 
 ### Advantages
