@@ -45,7 +45,7 @@ Make the test succeed.
 
 Like TDD but focusses on tests that describe _behavior_ over a test of implementation.
 
-Non-programmers can design BDD teets for a design.
+Non-programmers can design BDD tests for a design.
 
 
 ## Unit testing frameworks
