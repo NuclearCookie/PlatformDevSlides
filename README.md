@@ -19,6 +19,11 @@ Slides to the platform dev course
 * [Continuous Integration](course2/continuous_integration.md)
 * [Homework](course2/homework.md)
 
+### Course 3
+* [Assembly](course3/assembly.md)
+* [Certification](course3/certification.md)
+* [File System](course3/filesystem.md)
+
 ## Run the slides locally
 
 This requires you to setup a local webserver in the root of the project.
