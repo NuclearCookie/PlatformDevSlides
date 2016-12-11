@@ -29,6 +29,11 @@ Slides to the platform dev course
 * [File System](course4/filesystem.md)
 * [Multithreading](course4/multithreading.md)
 
+### Assignment
+The specification of the exam assignment can be found here:
+* [Assignment](assignment/readme.md)
+If there are questions, don't hesitate to contact us or create an issue on this project
+
 ## Run the slides locally
 
 This requires you to setup a local webserver in the root of the project.
