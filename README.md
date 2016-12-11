@@ -24,6 +24,11 @@ Slides to the platform dev course
 * [Certification](course3/certification.md)
 * [File System](course3/filesystem.md)
 
+### Course 4
+* [Abstraction](course4/abstraction.md)
+* [File System](course4/filesystem.md)
+* [Multithreading](course4/multithreading.md)
+
 ## Run the slides locally
 
 This requires you to setup a local webserver in the root of the project.
