@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/solarized.css">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown>
+                    <script type="text/template">
+                        # Platform development
+                    </script>
+                </section>
+                <section data-markdown="strings.md"
+                         data-separator="^\n\n\n"
+                         data-separator-vertical="^\n\n"
+                         data-separator-notes="^Note:">
+
+                </section>
+                <section data-markdown="git.md"
+                         data-separator="^\n\n\n"
+                         data-separator-vertical="^\n\n"
+                         data-separator-notes="^Note:">
+                </section>
+                </section>
+
+                <!-- empty Slide
+                <section data-markdown>
+                    <script type="text/template">
+                    </script>
+                </section>
+                -->
+            </div>
+        </div>
+        <script src="../reveal.js/lib/js/head.min.js"></script>
+        <script src="../reveal.js/js/reveal.js"></script>
+		<script>
+            Reveal.initialize({
+                dependencies: [
+                    // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                    { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+                    // Interpret Markdown in <section> elements
+                    { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+                    // Syntax highlight for <code> elements
+                    { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+                    // Zoom in and out with Alt+click
+                    { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+                    // Speaker notes
+                    { src: '../reveal.js/plugin/notes/notes.js', async: true },
+                ]
+            });
+        </script>
+    </body>
+</html>
