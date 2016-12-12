@@ -123,3 +123,23 @@ lowercase + punctuation
 | 6D       | m               | 7D       | }               |
 | 6E       | n               | 7E       | ~               |
 | 6F       | o               |          |                 |
+
+
+## Notes:
+
+Very easy to convert cases: a difference of `20h` between the same character with a different case.
+
+
+## Where are the missing 33 characters?
+
+control characters:
+
+* Most are useless now:
+  * Dates back from teletypewriters:
+  * SOH ( Start of Heading )
+  * EOT ( End of Transmission )
+  * ...
+* Some are still used:
+  * CR: Carriage return
+  * LF: Line Feed
+  * Tab
