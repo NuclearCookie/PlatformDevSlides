@@ -145,6 +145,21 @@ control characters:
   * Tab
 
 
+## How is this implemented?
+
+Standard C strings:
+```c
+char greetings[] = "Hello World";
+```
+
+an array of values of 8 bit ( normally ).
+**Dangerous!** watch out for buffer overflow.
+
+C++:
+```c++
+std::string greetings = "Hello World";
+```
+
 ## Problems with ASCII
 
 **It's really american!**
