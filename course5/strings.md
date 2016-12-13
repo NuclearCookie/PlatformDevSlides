@@ -47,7 +47,7 @@ Now try to run a string of computer 1 on computer 2.
 
 ## String standards
 
-First widely used standard to represent strings: **ASCII**
+First widely used standard to represent strings: **ASCII** ( first version: 1960 )
 
 ### American Standard Code for Information Interchange
 
@@ -171,11 +171,29 @@ This means we have 128 extra characters to define!
 
 ## Solutions for ASCII: Unicode
 
+First version of unicode: 1991
 Unicode is a 16-bit code.
 Unicode can represent 65536 different characters!
 
 More than enough for all the world's languages + extra
 
+
+_or is it..._
+
+Unicode 2.0: 1996
+
+Unicode is now a 32-bit code.
++ 1 million code points!
+
+* Hieroglyphs
+* rarely used Kanji or Chinese characters
+
+Currently: Unicode 9.0: 2016
+
+* More languages
+* Emoji!!
+
+Currently, 128237 characters are represented.
 
 
 ## Unicode
