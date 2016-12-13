@@ -196,10 +196,71 @@ Currently: Unicode 9.0: 2016
 Currently, 128237 characters are represented.
 
 
+
 ## Unicode
 
 * First 128 characters are the same as in ASCII ( compatible ) ( 0x0000 through 0x007F )
-* Latin ALphabet No.1 extension is in there ( 0x00A0 through 0x00FF )
+* Latin Alphabet No.1 extension is in there ( 0x00A0 through 0x00FF )
 * Other standards also incorporated.
 
 Sadly, ASCII is really widely used in computers :(
+
+
+## How to represent Unicode in a pc
+
+* UTF-8
+* UTF-16
+* UTF-32
+
+UTF = Unicode Transformation Format
+
+
+## UTF-32
+
+Each character uses 4 bytes.
+
+`A = 00000000 00000000 00000000 01000001`
+`水 = 00000000 00000000 01101100 00110100`
+
+* Most characters used: ASCII ( ony 7 bit... )
+* A lot of wasted memory
+* Fixed size: easy to index and count
+
+
+## UTF-16
+
+Each character can be represented by 4 bytes _or_ 2 bytes
+
+`A = 00000000 01000001`
+`水 = 01101100 00110100`
+`𝄞 = 11011000 00110100 11011101 00011110` ( 2 surrogates )
+
+
+## UTF-8
+
+Each character can be represented by 4 bytes _or_ 3 bytes _or_ 2 bytes _or_ 1 byte
+
+`A = 01000001`
+`水 = 11100110 10110000 10110100`
+`𝄞 = 111011100 10001000 10111100`
+
+
+## UTF-8: How to split a codepoint across bytes
+
+We use a stream of bytes. some points will be 1 byte, other will be 2 / 3 / 4. We don't know.
+How can know where a character starts?
+
+* For a 1 byte code point: leading bit is 0.
+* For a 2 byte code point: bytes are split like this: 110bbbaa 10aaaaaa
+* For a 3 byte code point: bytes are split like this: 1110bbbb 10bbbbaa 10aaaaaa
+* For a 4 byte code point: bytes are split like this: 11110ccc 10ccbbbb 10bbbbaa 10aaaaaa
+
+
+## Handy table from wikipedia:
+
+| Codepoints         | UTF-32 | UTF-16 | UTF-8 | Notes on UTF-8|
+| :-------------     | :-------------                       | :-------------                      | :-------------                       | :------------- |
+| U+0000..U+007F     | 00000000 00000000<br/>00000000 0aaaaaaa | 00000000 0aaaaaaa                   | 0aaaaaaa                             | ASCII equivalents; byte starts with 0bit |
+| U+0080..U+07FF     | 00000000 00000000<br/>00000bbb aaaaaaaa | 00000bbb aaaaaaaa                   | 110bbbaa 10aaaaaa                    | First byte starts with 110, second with 10 |
+| U+0800..U+FFFF     | 00000000 00000000<br/>bbbbbbbb aaaaaaaa | bbbbbbbb aaaaaaaa	                  | 1110bbbb 10bbbbaa<br/>10aaaaaa      	 | First byte starts with 1110, others with 10 |
+| U+010000..U+10FFFF | 00000000 000ccccc<br/>bbbbbbbb aaaaaaaa | 110110cc cccbbbbb 110111bb aaaaaaaa | 11110ccc 10ccbbbb<br/>10bbbbaa 10aaaaaa | First byte starts with 11110, others with 10 |
