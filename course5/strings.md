@@ -264,3 +264,42 @@ How can know where a character starts?
 | U+0080..U+07FF     | 00000000 00000000<br/>00000bbb aaaaaaaa | 00000bbb aaaaaaaa                   | 110bbbaa 10aaaaaa                    | First byte starts with 110, second with 10 |
 | U+0800..U+FFFF     | 00000000 00000000<br/>bbbbbbbb aaaaaaaa | bbbbbbbb aaaaaaaa	                  | 1110bbbb 10bbbbaa<br/>10aaaaaa      	 | First byte starts with 1110, others with 10 |
 | U+010000..U+10FFFF | 00000000 000ccccc<br/>bbbbbbbb aaaaaaaa | 110110cc cccbbbbb 110111bb aaaaaaaa | 11110ccc 10ccbbbb<br/>10bbbbaa 10aaaaaa | First byte starts with 11110, others with 10 |
+
+
+## Exercise
+
+Write a UTF-8 Iterator.
+
+### Requirements:
+
+* utf8_iterator class
+  * Constructor:
+    * takes std::string as constructor argument
+    * prepares the iterator to access the first char
+  * Necessary operators for iterators
+
+Expected usage:
+
+```cpp
+utf8_iterator
+    iterator(u8"abcd\u03A3ef\u03C0");
+uint32_t
+    count = 0;
+
+    for( auto char : iterator )
+    {
+        count++;
+        if ( *iterator == 0x03A3 ) {
+            std::cout << "Found greek character at " << count << std::endl;
+        }
+        else if ( *iterator == 0x03C0 ) {
+            std::cout << "Found pi at " << count << std::endl;
+        }
+    }
+
+    std::cout << "Total character count: " << count;
+    // would expect this output:
+    // Found greek character at 5
+    // Found pi at 8
+    // Total character count: 8
+```
