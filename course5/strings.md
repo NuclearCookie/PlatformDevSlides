@@ -143,3 +143,45 @@ control characters:
   * CR: Carriage return
   * LF: Line Feed
   * Tab
+
+
+## Problems with ASCII
+
+**It's really american!**
+
+* `24h` is the $ sign. but how do we display the £ or ¥ or € symbol?
+* What about accents?
+* Other punctuation marks? (¿ ¡)
+* Other character sets ( eastern languages, hebrew, arabic, ..)
+
+
+## Solutions for ASCII
+
+ASCII defines 10 codes to be redefined for national uses.
+In addition, the # sign can be replaced by the £ sign, and the $ sign can be replaced by the generalized currency sign ¤.
+
+ASCII uses only 7 bit.
+Almost all computers systems characters as an 8 bit values.
+This means we have 128 extra characters to define!
+
+* Latin Alphabet No. 1
+* Shift-JIS
+* DBCS
+
+
+## Solutions for ASCII: Unicode
+
+Unicode is a 16-bit code.
+Unicode can represent 65536 different characters!
+
+More than enough for all the world's languages + extra
+
+
+
+## Unicode
+
+* First 128 characters are the same as in ASCII ( compatible ) ( 0x0000 through 0x007F )
+* Latin ALphabet No.1 extension is in there ( 0x00A0 through 0x00FF )
+* Other standards also incorporated.
+
+Sadly, ASCII is really widely used in computers :(
