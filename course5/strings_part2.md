@@ -63,6 +63,24 @@ How can we improve on strings?
 
 ## Different kind of strings in games
 
+
+### Normal strings
+
+The good old wrapped char * array with extra functionality and safety.
+
+* Temporary strings
+* Passing ownership to another class
+* Other
+
+
+### String streaming
+
+Create a pre-allocated buffer. fill it with any type using operator <<.
+
+* Appending strings, or other types
+* Avoids re-allocations due to small string capacity
+
+
 ### String interning
 
 Storing only 1 copy of each distinct string value.
@@ -79,34 +97,20 @@ assert(one.getStringArray() != three.getStringArray() );
 * No modifications
 * Used in a lot of places
 * Comparing 2 interned strings ( compare data pointer )
+* Expensive to create
 
 
-### String streaming
-
-Create a pre-allocated buffer. fill it with any type using operator <<.
-
-* Appending strings, or other types
-* Avoids re-allocations due to small string capacity
-
-
-### Normal strings
-
-The good old wrapped char * array with extra functionality and safety.
-
-* Temporary strings
-* Passing ownership to another class
-* Other
-
-
-## String views
+## String views and sub strings
 
 Doesn't copy a string. Takes a view on the data pointer.
 
 * Pass a string to a function that does not take ownership
 * Avoids allocations
+* No null termination with substrings! Be careful. 
 
 
 ### String hash
+
 String hash: converts a string to a unique number.
 
 * No modifications.
@@ -115,11 +119,24 @@ String hash: converts a string to a unique number.
 * Used as keys in maps
 
 
+<!-- .slide: class="smaller_text" -->
+### String types overview
+
+| String type | Owns memory | Creation cost | text available | \0 terminated | compare cost |
+|:---------|:----------------|:---------|:----------------|:----------------|:---|
+| normal string       | yes      | +       | yes    | yes | + |
+| string stream       | yes      | 0       | yes    | yes | n/a |
+| string interning    | yes (shared)  | +++ | yes | yes | 0 |
+| string views        | no       | 0       | yes    | no | + |
+| string hash         | yes      | 0       | no     | n/a | 0 |
+
+
 ### Exercise:
 
 Implement a string hasher!
 
-Requirements:
+
+#### Requirements:
 * Take a look at FNV hashes
 * Implement a function:
   * Loop over each character

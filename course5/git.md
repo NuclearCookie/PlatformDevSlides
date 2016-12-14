@@ -1,7 +1,6 @@
 ## Git
 
 
-
 ## Basics
 
 

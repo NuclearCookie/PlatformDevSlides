@@ -1,7 +1,6 @@
 # Strings strings strings
 
 
-
 ## How to represent strings in computers?
 
 What do we need in a string?
@@ -26,6 +25,11 @@ example implementation 1:
 | c       | `0000011`   |
 | ...     | `...`       |
 
+
+## How to represent strings in computers?
+
+map each element to a unique number:
+
 example implementation 2:
 
 | element | number      |
@@ -38,8 +42,12 @@ example implementation 2:
 
 ## How to represent strings in computers?
 
-Imagine 2 computers, 1 with string implementation 1, the other with string implementation 2.
+Imagine 2 computers, 
+* 1 with string implementation 1, 
+* 1 with string implementation 2.
+
 Now try to run a string of computer 1 on computer 2.
+
 `abc` became `.,?` !
 
 **This ask for a standard!**
@@ -47,7 +55,9 @@ Now try to run a string of computer 1 on computer 2.
 
 ## String standards
 
-First widely used standard to represent strings: **ASCII** ( first version: 1960 )
+First widely used standard to represent strings: 
+
+**ASCII** ( first version: 1960 )
 
 ### American Standard Code for Information Interchange
 
@@ -60,6 +70,8 @@ Uses 7 bits. ( 128 characters )
 
 split into 4 sections of 32 codes.
 
+
+## <!-- .slide: class="smaller_text" -->
 numbers + punctuation
 
 | Hex code | ASCII Character | Hex code | ASCII Character |
@@ -82,6 +94,7 @@ numbers + punctuation
 | 2F       | /               | 3F       | ?               |
 
 
+<!-- .slide: class="smaller_text" -->
 uppercase + punctuation
 
 | Hex code | ASCII Character | Hex code | ASCII Character |
@@ -103,6 +116,8 @@ uppercase + punctuation
 | 4E       | N               | 5E       | ^               |
 | 4F       | O               | 5F       | _               |
 
+
+<!-- .slide: class="smaller_text" -->
 lowercase + punctuation
 
 | Hex code | ASCII Character | Hex code | ASCII Character |
@@ -127,7 +142,7 @@ lowercase + punctuation
 
 ## Notes:
 
-Very easy to convert cases: a difference of `20h` between the same character with a different case.
+Very easy to convert cases: a difference of `0x20` between the same character with a different case.
 
 
 ## Where are the missing 33 characters?
@@ -145,26 +160,35 @@ control characters:
   * Tab
 
 
-## How is this implemented?
+## How are strings implemented in c/c++?
+
 
 Standard C strings:
 ```c
 char greetings[] = "Hello World";
+==
+char greetings[] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+==
+char greetings[] = { 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64 };
 ```
 
 an array of values of 8 bit ( normally ).
+
 **Dangerous!** watch out for buffer overflow.
+
+[more info on buffer overflows](http://security.stackexchange.com/a/95248)
 
 C++:
 ```c++
 std::string greetings = "Hello World";
 ```
 
+
 ## Problems with ASCII
 
 **It's really american!**
 
-* `24h` is the $ sign. but how do we display the £ or ¥ or € symbol?
+* `0x24` is the $ sign. but how do we display the £ or ¥ or € symbol?
 * What about accents?
 * Other punctuation marks? (¿ ¡)
 * Other character sets ( eastern languages, hebrew, arabic, ..)
@@ -235,6 +259,7 @@ UTF = Unicode Transformation Format
 Each character uses 4 bytes.
 
 `A = 00000000 00000000 00000000 01000001`
+
 `水 = 00000000 00000000 01101100 00110100`
 
 * Most characters used: ASCII ( ony 7 bit... )
@@ -247,7 +272,9 @@ Each character uses 4 bytes.
 Each character can be represented by 4 bytes _or_ 2 bytes
 
 `A = 00000000 01000001`
+
 `水 = 01101100 00110100`
+
 `𝄞 = 11011000 00110100 11011101 00011110` ( 2 surrogates )
 
 
@@ -256,7 +283,9 @@ Each character can be represented by 4 bytes _or_ 2 bytes
 Each character can be represented by 4 bytes _or_ 3 bytes _or_ 2 bytes _or_ 1 byte
 
 `A = 01000001`
+
 `水 = 11100110 10110000 10110100`
+
 `𝄞 = 111011100 10001000 10111100`
 
 
@@ -271,6 +300,7 @@ How can know where a character starts?
 * For a 4 byte code point: bytes are split like this: 11110ccc 10ccbbbb 10bbbbaa 10aaaaaa
 
 
+<!-- .slide: class="smaller_text" -->
 ## Handy table from wikipedia:
 
 | Codepoints         | UTF-32 | UTF-16 | UTF-8 | Notes on UTF-8|
@@ -285,36 +315,37 @@ How can know where a character starts?
 
 Write a UTF-8 Iterator.
 
+
+<!-- .slide: class="smaller_text" -->
 ### Requirements:
 
-* utf8_iterator class
-  * Constructor:
-    * takes std::string as constructor argument
-    * prepares the iterator to access the first char
-  * Necessary operators for iterators
+utf8_string class
+* Constructor:
+  * takes char * as constructor argument
+  * implements the necessary methods required for iterating
+    * begin
+    * end
+  * has an internal class: utf8_iterator
+    * implements the necessary methods required for iterating
+      * operator ++
+      * operator != 
+      * ...
+    * checks each utf8 character for number of bytes.
+    * calculates offsets
+
 
 Expected usage:
 
 ```cpp
-utf8_iterator
-    iterator(u8"abcd\u03A3ef\u03C0");
+utf8_string
+    test_string(u8"中文");
 uint32_t
     count = 0;
 
-    for( auto char : iterator )
-    {
-        count++;
-        if ( *iterator == 0x03A3 ) {
-            std::cout << "Found greek character at " << count << std::endl;
-        }
-        else if ( *iterator == 0x03C0 ) {
-            std::cout << "Found pi at " << count << std::endl;
-        }
-    }
+for (auto elem : test_string)
+{
+    count++;
+}
 
-    std::cout << "Total character count: " << count;
-    // would expect this output:
-    // Found greek character at 5
-    // Found pi at 8
-    // Total character count: 8
+REQUIRE(count == 2);
 ```
