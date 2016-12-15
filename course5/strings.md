@@ -42,8 +42,8 @@ example implementation 2:
 
 ## How to represent strings in computers?
 
-Imagine 2 computers, 
-* 1 with string implementation 1, 
+Imagine 2 computers,
+* 1 with string implementation 1,
 * 1 with string implementation 2.
 
 Now try to run a string of computer 1 on computer 2.
@@ -55,7 +55,7 @@ Now try to run a string of computer 1 on computer 2.
 
 ## String standards
 
-First widely used standard to represent strings: 
+First widely used standard to represent strings:
 
 **ASCII** ( first version: 1960 )
 
@@ -167,9 +167,9 @@ Standard C strings:
 ```c
 char greetings[] = "Hello World";
 ==
-char greetings[] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+char greetings[] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\0'};
 ==
-char greetings[] = { 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64 };
+char greetings[] = { 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x00 };
 ```
 
 an array of values of 8 bit ( normally ).
@@ -328,7 +328,7 @@ utf8_string class
   * has an internal class: utf8_iterator
     * implements the necessary methods required for iterating
       * operator ++
-      * operator != 
+      * operator !=
       * ...
     * checks each utf8 character for number of bytes.
     * calculates offsets

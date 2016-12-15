@@ -11,6 +11,7 @@
 * Git is much faster than SVN
 * With git, you always clone the entire repository
 * Git's repositories are much smaller than Subversions
+* Git is a distributed versioning system (DVS), SVN is a centralized versioning system (CVS)
 
 [more](https://git.wiki.kernel.org/index.php/GitSvnComparison)
 
@@ -30,6 +31,7 @@
 or with a remote server:
 
 `git clone username@host:/path/to/repository`
+`git clone https://www.exammple.com/path/to/repository`
 
 
 ### Workflow
@@ -221,11 +223,11 @@ When done, add resolved conflicts to stage to mark completion
 
 Why branches?
 
-Branches can be used to 
+Branches can be used to
 * work on 2 features at once without sharing the code
 * Have a stable code branch (master) and working branches (develop)
 * Create a merge request
-
+* Branches contain the complete history of the ancestor branches. including previous merges.
 
 Creating branches
 

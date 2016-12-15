@@ -73,12 +73,13 @@ The good old wrapped char * array with extra functionality and safety.
 * Other
 
 
-### String streaming
+### Preallocated string streaming
 
-Create a pre-allocated buffer. fill it with any type using operator <<.
+Create a pre-allocated buffer ( 1024 bytes for example ). fill it with any type using operator <<.
 
 * Appending strings, or other types
 * Avoids re-allocations due to small string capacity
+* Not the case in std::stringstream!!
 
 
 ### String interning
@@ -97,8 +98,20 @@ assert(one.getStringArray() != three.getStringArray() );
 * No modifications
 * Used in a lot of places
 * Comparing 2 interned strings ( compare data pointer )
-* Expensive to create
+* Expensive to create.
+  * strings stored in data container. requires search in container.
+  * + potential allocation and insertion if not found.
+* repeated strings take less memory
 
+```cpp
+class file_description
+{
+private:
+    interned_string directory;
+    string file_name;
+};
+// all files in this directory will use the same directory string.
+```
 
 ## String views and sub strings
 
@@ -106,7 +119,22 @@ Doesn't copy a string. Takes a view on the data pointer.
 
 * Pass a string to a function that does not take ownership
 * Avoids allocations
-* No null termination with substrings! Be careful. 
+* No null termination with substrings! Be careful.
+
+```cpp
+sub_string getExtension()
+{
+    uint23_t count = getExtensionCharacterCount();
+    return sub_string(file_path.c_str() + file_path.length() - count, count);
+}
+
+// use
+// note use of strncmp. gives length to check.
+if ( strncpm( path.getExtension(), ".exe", 4 ) == 0 )
+{
+    // do something
+}
+```
 
 
 ### String hash
