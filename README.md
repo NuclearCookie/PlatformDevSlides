@@ -31,7 +31,7 @@ Slides to the platform dev course
 
 ### Assignment
 The specification of the exam assignment can be found here:
-* [Assignment](assignment/readme.md)
+* [Assignment](assignment/README.md)
 If there are questions, don't hesitate to contact us or create an issue on this project
 
 ## Run the slides locally
