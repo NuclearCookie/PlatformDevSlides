@@ -29,6 +29,13 @@ Slides to the platform dev course
 * [File System](course4/filesystem.md)
 * [Multithreading](course4/multithreading.md)
 
+### Course 5
+* [String implementations](course5/strings.md)
+* [Strings in games](course5/strings_part_2.md)
+* [Git](course5/git.md)
+* Regular Expressions (no slides)
+* [Trivia](course5/trivia.md)
+
 ### Assignment
 The specification of the exam assignment can be found here:
 * [Assignment](assignment/readme.md)
